@@ -4,7 +4,7 @@ Differentially-private Federated Neural Architecture Search
 
 ## Requirement
 
-Slurm Platform with GPU support
+Slurm Platform with GPU support,
 Python 3.6
 ```
 numpy==1.18.1
@@ -42,18 +42,18 @@ srun --nodes=8 --gres=gpu:1 python ./train_dist_search.py --name PTB --infi_band
 
 ```shell
 cd ./cnn
-./augment.py --nodes=1 --gres=gpu:1 --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
-./augment.py --nodes=2 --gres=gpu:1 --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
-./augment.py --nodes=4 --gres=gpu:1 --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
-./augment.py --nodes=8 --gres=gpu:1 --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
+srun --nodes=1 --gres=gpu:1 python ./augment.py --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
+srun --nodes=2 --gres=gpu:1 python ./augment.py --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
+srun --nodes=4 --gres=gpu:1 python ./augment.py --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
+srun --nodes=8 --gres=gpu:1 python ./augment.py --name cifar10 --dataset cifar10 --workers 16 --print_freq 50 --lr 0.05 --infi_band False --genotype {genotype_str}
 ```
 
 ```shell
 cd ./rnn
-srun python --nodes=1 --gres=gpu:1 ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 256  --batch_size 256
-srun python --nodes=2 --gres=gpu:1 ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 256  --batch_size 256
-srun python --nodes=4 --gres=gpu:1 ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 128  --batch_size 256
-srun python --nodes=8 --gres=gpu:1 ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 64  --batch_size 256
+srun --nodes=1 --gres=gpu:1 python ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 256  --batch_size 256
+srun --nodes=2 --gres=gpu:1 python ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 256  --batch_size 256
+srun --nodes=4 --gres=gpu:1 python ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 128  --batch_size 256
+srun --nodes=8 --gres=gpu:1 python ./train_dist.py --name PTB --infi_band False --workers 16 --log-interval 10 --small_batch_size 64  --batch_size 256
 ```
 
 ## Usage for DP-FNAS
